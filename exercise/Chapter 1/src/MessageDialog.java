@@ -1,4 +1,4 @@
-// 1.11 Using message dialog
+// 1.15 Using message dialog
 import javax.swing.JOptionPane;
 public class MessageDialog {
     public static void main(String[] args){
