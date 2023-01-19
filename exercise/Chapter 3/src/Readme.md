@@ -1,4 +1,4 @@
-1.0 Xuechun Hua, Shangrong Xue
+1.0 Xuechun Hua
 
 1.1 import java.time.LocalDate
 
