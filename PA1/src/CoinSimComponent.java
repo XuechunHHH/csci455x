@@ -25,9 +25,9 @@ public class CoinSimComponent extends JComponent {
         int left3 = frameWidth / 4 + left2;
         float total = applicationHeight1 + applicationHeight2 + applicationHeight3;
         float scale = (frameHeight - bolder * 2) / total;
-        int pct1 =  Math.round(applicationHeight1 * 100 / total);
-        int pct2 =  Math.round(applicationHeight2 * 100 / total);
-        int pct3 =  Math.round(applicationHeight3 * 100 / total);
+        int pct1 =  Math.round(applicationHeight1 / total * 100);
+        int pct2 =  Math.round(applicationHeight2 / total * 100);
+        int pct3 =  Math.round(applicationHeight3 / total * 100);
 
         Bar bar1 = new Bar(bottom,left1,width,applicationHeight1,scale,Color.RED,"Two Heads: "+applicationHeight1+"("+pct1+"%)");
         Bar bar2 = new Bar(bottom,left2,width,applicationHeight2,scale,Color.GREEN,"A Head and a Tail: "+applicationHeight2+"("+pct2+"%)");
