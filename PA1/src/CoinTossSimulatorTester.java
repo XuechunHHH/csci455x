@@ -2,52 +2,57 @@ public class CoinTossSimulatorTester {
     public static void main(String[] args) {
         CoinTossSimulator toss = new CoinTossSimulator();
         boolean correct = false;
-        System.out.println("NumTrials: "+toss.getNumTrials());
+        int trials = 0;
+        System.out.println("Number of trials [exp:0]: "+trials);
         System.out.println("TwoHeads: "+toss.getTwoHeads());
         System.out.println("HeadTails: "+toss.getHeadTails());
         System.out.println("TwoTails: "+toss.getTwoTails());
-        correct = toss.getNumTrials() == (toss.getTwoTails() + toss.getHeadTails() + toss.getTwoHeads());
+        correct = trials == toss.getNumTrials();
         System.out.println("Tosses add up correctly? "+ correct);
 
         toss.run(1);
-        System.out.println("NumTrials: "+toss.getNumTrials());
+        trials += 1;
+        System.out.println("Number of trials [exp:1]: "+trials);
         System.out.println("TwoHeads: "+toss.getTwoHeads());
         System.out.println("HeadTails: "+toss.getHeadTails());
         System.out.println("TwoTails: "+toss.getTwoTails());
-        correct = toss.getNumTrials() == (toss.getTwoTails() + toss.getHeadTails() + toss.getTwoHeads());
+        correct = trials == toss.getNumTrials();
         System.out.println("Tosses add up correctly? "+ correct);
 
         toss.run(10);
-        System.out.println("NumTrials: "+toss.getNumTrials());
+        trials += 10;
+        System.out.println("Number of trials [exp:11]: "+trials);
         System.out.println("TwoHeads: "+toss.getTwoHeads());
         System.out.println("HeadTails: "+toss.getHeadTails());
         System.out.println("TwoTails: "+toss.getTwoTails());
-        correct = toss.getNumTrials() == (toss.getTwoTails() + toss.getHeadTails() + toss.getTwoHeads());
+        correct = trials == toss.getNumTrials();
         System.out.println("Tosses add up correctly? "+ correct);
 
         toss.run(100);
-        System.out.println("NumTrials: "+toss.getNumTrials());
+        trials += 100;
+        System.out.println("Number of trials [exp:111]: "+trials);
         System.out.println("TwoHeads: "+toss.getTwoHeads());
         System.out.println("HeadTails: "+toss.getHeadTails());
         System.out.println("TwoTails: "+toss.getTwoTails());
-        correct = toss.getNumTrials() == (toss.getTwoTails() + toss.getHeadTails() + toss.getTwoHeads());
+        correct = trials == toss.getNumTrials();
         System.out.println("Tosses add up correctly? "+ correct);
 
         toss.reset();
-
-        System.out.println("NumTrials: "+toss.getNumTrials());
+        trials = 0;
+        System.out.println("Number of trials [exp:0]: "+trials);
         System.out.println("TwoHeads: "+toss.getTwoHeads());
         System.out.println("HeadTails: "+toss.getHeadTails());
         System.out.println("TwoTails: "+toss.getTwoTails());
-        correct = toss.getNumTrials() == (toss.getTwoTails() + toss.getHeadTails() + toss.getTwoHeads());
+        correct = trials == toss.getNumTrials();
         System.out.println("Tosses add up correctly? "+ correct);
 
         toss.run(1000);
-        System.out.println("NumTrials: "+toss.getNumTrials());
+        trials += 1000;
+        System.out.println("Number of trials [exp:1000]: "+trials);
         System.out.println("TwoHeads: "+toss.getTwoHeads());
         System.out.println("HeadTails: "+toss.getHeadTails());
         System.out.println("TwoTails: "+toss.getTwoTails());
-        correct = toss.getNumTrials() == (toss.getTwoTails() + toss.getHeadTails() + toss.getTwoHeads());
+        correct = trials == toss.getNumTrials();
         System.out.println("Tosses add up correctly? "+ correct);
     }
 }
