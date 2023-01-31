@@ -29,6 +29,8 @@ public class CoinTossSimulator {
     /**
      Creates a coin toss simulator with no trials done yet.
      */
+
+    // CoinTossSimulator constructor
     public CoinTossSimulator() {
 
     }
@@ -40,6 +42,8 @@ public class CoinTossSimulator {
 
      @param numTrials  number of trials to for simulation; must be >= 1
      */
+
+    // toss the coin for numTrials times
     public void run(int numTrials) {
         this.numTrials +=numTrials;
         for(int i=0;i<numTrials;++i){
@@ -47,7 +51,7 @@ public class CoinTossSimulator {
             int coin1 = ran.nextInt(2);   // 0 is Head and 1 is Tail
             int coin2 = ran.nextInt(2);
             if (coin1 == 0 && coin2 == 0){
-                ++twoHeads;
+                ++twoHeads;  // calculate the results
             } else if (coin1 == 1 && coin2 == 1) {
                 ++twoTails;
             } else {
@@ -60,6 +64,7 @@ public class CoinTossSimulator {
     /**
      Get number of trials performed since last reset.
      */
+    // get the trial times
     public int getNumTrials() {
         return numTrials; // DUMMY CODE TO GET IT TO COMPILE
     }
@@ -68,6 +73,8 @@ public class CoinTossSimulator {
     /**
      Get number of trials that came up two heads since last reset.
      */
+
+    // get the TwoHeads number
     public int getTwoHeads() {
         return twoHeads; // DUMMY CODE TO GET IT TO COMPILE
     }
@@ -76,6 +83,7 @@ public class CoinTossSimulator {
     /**
      Get number of trials that came up two tails since last reset.
      */
+    // get the TwoTails number
     public int getTwoTails() {
         return twoTails; // DUMMY CODE TO GET IT TO COMPILE
     }
@@ -84,6 +92,7 @@ public class CoinTossSimulator {
     /**
      Get number of trials that came up one head and one tail since last reset.
      */
+    // get the number of one Head and One Tail
     public int getHeadTails() {
         return headTails; // DUMMY CODE TO GET IT TO COMPILE
     }
@@ -92,6 +101,8 @@ public class CoinTossSimulator {
     /**
      Resets the simulation, so that subsequent runs start from 0 trials done.
      */
+
+    // reset the number of trial to zero
     public void reset() {
         numTrials = 0;
         twoHeads = 0;

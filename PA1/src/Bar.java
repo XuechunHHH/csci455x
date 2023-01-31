@@ -46,6 +46,7 @@ public class Bar {
      @param color  the color of the bar
      @param label  the label under the bar
      */
+   // Bar constructor
     public Bar(int bottom, int left, int width, int applicationHeight,
                double scale, Color color, String label) {
         this.bottom = bottom;
@@ -61,22 +62,28 @@ public class Bar {
      Draw the labeled bar.
      @param g2  the graphics context
      */
+
+    // draw the bar and label
     public void draw(Graphics2D g2) {
+        // set position of the bar
         int xLeft = left;
         int height = (int) (applicationHeight * scale);
         int yTop = bottom - height;
 
+        // get the font size of label
         Font font = g2.getFont();
         FontRenderContext context = g2.getFontRenderContext();
         Rectangle2D labelBounds = font.getStringBounds(label, context);
         int widthOfLabel = (int) labelBounds.getWidth();
         int heightOfLabel = (int) labelBounds.getHeight();
 
+        // set position of the label
         float xLabel = xLeft + width/2 - widthOfLabel/2;
         float yLabel = bottom + heightOfLabel;
 
         Rectangle body = new Rectangle(xLeft,yTop,width,height);
 
+        // draw the bar and label
         g2.draw(body);
         g2.setPaint(color);
         g2.fill(body);
