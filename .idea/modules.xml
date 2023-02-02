@@ -14,8 +14,10 @@
       <module fileurl="file://$PROJECT_DIR$/codebat/String/String.iml" filepath="$PROJECT_DIR$/codebat/String/String.iml" />
       <module fileurl="file://$PROJECT_DIR$/codebat/String_1/String_1.iml" filepath="$PROJECT_DIR$/codebat/String_1/String_1.iml" />
       <module fileurl="file://$PROJECT_DIR$/codebat/String_2/String_2.iml" filepath="$PROJECT_DIR$/codebat/String_2/String_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/codebat/String_3/String_3.iml" filepath="$PROJECT_DIR$/codebat/String_3/String_3.iml" />
       <module fileurl="file://$PROJECT_DIR$/codebat/Warmup_1/Warmup_1.iml" filepath="$PROJECT_DIR$/codebat/Warmup_1/Warmup_1.iml" />
       <module fileurl="file://$PROJECT_DIR$/codebat/Warmup_2/Warmup_2.iml" filepath="$PROJECT_DIR$/codebat/Warmup_2/Warmup_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercise/_02-02/_02-02.iml" filepath="$PROJECT_DIR$/exercise/_02-02/_02-02.iml" />
       <module fileurl="file://$PROJECT_DIR$/codebat/codebat.iml" filepath="$PROJECT_DIR$/codebat/codebat.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/csci455x.iml" filepath="$PROJECT_DIR$/.idea/csci455x.iml" />
       <module fileurl="file://$PROJECT_DIR$/exercise/exercise.iml" filepath="$PROJECT_DIR$/exercise/exercise.iml" />
