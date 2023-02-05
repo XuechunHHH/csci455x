@@ -39,6 +39,8 @@ public class BookshelfKeeperProg {
 
         System.out.println(bookshelfKeeper.toString());
 
+        System.out.println("Type pick <index> or put <height> followed by newline. Type end to exit.");
+
         String ope  = in.next();
         while (!ope.equals("end")){
             int num = in.nextInt();
