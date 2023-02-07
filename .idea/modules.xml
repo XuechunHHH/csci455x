@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/codebat/Array_1/Array_1.iml" filepath="$PROJECT_DIR$/codebat/Array_1/Array_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/codebat/Array_2/Array_2.iml" filepath="$PROJECT_DIR$/codebat/Array_2/Array_2.iml" />
       <module fileurl="file://$PROJECT_DIR$/PA1/CarTest/CarTest.iml" filepath="$PROJECT_DIR$/PA1/CarTest/CarTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/exercise/Chapter 1/Chapter 1.iml" filepath="$PROJECT_DIR$/exercise/Chapter 1/Chapter 1.iml" />
       <module fileurl="file://$PROJECT_DIR$/exercise/Chapter 2/Chapter 2.iml" filepath="$PROJECT_DIR$/exercise/Chapter 2/Chapter 2.iml" />
