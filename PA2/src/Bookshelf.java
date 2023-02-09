@@ -22,6 +22,7 @@ public class Bookshelf {
     /**
      Representation invariant:
      An array list to store the height sequence of books from short to tall
+     1.All the book height must be positive
      */
     // <add instance variables here>
     private ArrayList<Integer> bookshelf;
@@ -155,8 +156,10 @@ public class Bookshelf {
      * (See representation invariant comment for more details.)
      */
     private boolean isValidBookshelf() {
-        if (!isSorted()) return false;  // check if the bookshelf is in well-sorted
-        if (bookshelf.size() != 0 && bookshelf.get(0) <= 0) return false;   // check if the height of books are all >= 0
+        if (bookshelf.size() == 0) return true;
+        for (int i=0;i<bookshelf.size();++i){
+            if (bookshelf.get(i)<=0) return false;
+        }
         return true;
     }
 

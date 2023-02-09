@@ -18,6 +18,8 @@ public class BookshelfKeeper {
      Representation invariant:
 
      bookshelf: store the height of books in ascending sequence
+     1.The height of the sequence must be sorted.
+     2.Call is less than TotalCall
 
      */
 
@@ -212,7 +214,6 @@ public class BookshelfKeeper {
      */
     private boolean isValidBookshelfKeeper() {
         if (!bookshelf.isSorted()) return false;  // check if the bookshelf is in well-sorted
-        if (bookshelf.size() != 0 && bookshelf.getHeight(0) <= 0) return false;   // check if the height of books are all >= 0
         if (totalCalls < calls) return false;   // the totalCalls is always >= calls
         return true;
     }
