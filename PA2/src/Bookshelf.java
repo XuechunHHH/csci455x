@@ -57,8 +57,6 @@ public class Bookshelf {
      * PRE: height > 0 (height of book is always positive)
      */
     public void addFront(int height) {
-//        if (height <=0 ) return;  // if the parameter height passing in is wrong, just skip
-
         bookshelf.add(0,height); // add the book with specified height to the bookshelf at index of 0
 
         assert isValidBookshelf();  // check if the bookshelf is valid after add the height to the front
@@ -82,8 +80,6 @@ public class Bookshelf {
      * PRE: this.size() > 0 i.e. can be called only on non-empty BookShelf
      */
     public int removeFront() {
-//        if (bookshelf.size()==0) return 0;   // if the bookshelf is already empty, return 0 directly
-
         int height = bookshelf.remove(0);  // remove the book with specified height from the bookshelf at index of 0
                                                  // and store the height of the removed book in height
 
@@ -99,8 +95,6 @@ public class Bookshelf {
      * PRE: this.size() > 0 i.e. can be called only on non-empty BookShelf
      */
     public int removeLast() {
-//        if (bookshelf.size()==0) return 0;   // if the bookshelf is already empty, return 0 directly
-
         int height = bookshelf.remove(bookshelf.size()-1);  // remove the book with specified height from the end of the bookshelf
                                                                   // and store the height of the removed book in height
 
@@ -115,8 +109,6 @@ public class Bookshelf {
      * PRE: 0 <= position < this.size()
      */
     public int getHeight(int position) {
-//        if (position < 0 || position >= bookshelf.size()) return 0; // if the parameter position passing in is wrong, just skip
-
         return bookshelf.get(position); // return the value stored at the index of position
     }
 

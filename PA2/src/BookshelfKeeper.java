@@ -1,5 +1,5 @@
-// Name:
-// USC NetID:
+// Name: Xuechun Hua
+// USC NetID: 9060765181
 // CSCI455 PA2
 // Spring 2023
 
@@ -18,13 +18,18 @@ public class BookshelfKeeper {
      Representation invariant:
 
      bookshelf: store the height of books in ascending sequence
+     calls: the number of movements token in the current pick or put
+     totalCalls: the total number of movements token in picks and puts
      1.The height of the sequence must be sorted.
-     2.Call is less than TotalCall
+     2.Call is less than TotalCall.
+     3.The temporary bookshelf is always empty after puts and picks.
 
      */
 
     // <add instance variables here>
     private Bookshelf bookshelf;
+
+    private Bookshelf bookshelftemp;
     private int calls = 0;
     private int totalCalls = 0;
 
@@ -34,6 +39,8 @@ public class BookshelfKeeper {
      */
     public BookshelfKeeper() {
         bookshelf = new Bookshelf();
+
+        bookshelftemp = new Bookshelf();
 
         assert isValidBookshelfKeeper();
     }
@@ -46,6 +53,8 @@ public class BookshelfKeeper {
      */
     public BookshelfKeeper(Bookshelf sortedBookshelf) {
         bookshelf = sortedBookshelf;
+
+        bookshelftemp = new Bookshelf();
 
         assert isValidBookshelfKeeper();
     }
@@ -63,48 +72,27 @@ public class BookshelfKeeper {
         int num = bookshelf.getHeight(position);
         int front = position;
         int back = position;
-
         for (int i=position-1;i>=0;--i){
             if (bookshelf.getHeight(i) != num){
                 front  = i+1;
                 break;
             }
         }
-
         for (int i=position+1;i<bookshelf.size();++i){
             if (bookshelf.getHeight(i) != num){
                 back = i-1;
                 break;
             }
         }
-
         back = bookshelf.size()-back-1;
         if (front<=back){    // decide which end to pick
             calls = 2*front+1;   // calculate the calls used this operation
             totalCalls += calls;    // update the totalcalls
-            Bookshelf temps = new Bookshelf();
-            for (int i=0;i<=front;++i){     // remove the books when index<=position and store it in a temporary bookshelf
-                int temp = bookshelf.removeFront();
-                temps.addLast(temp);
-            }
-            temps.removeLast();  // delete the book which will be removed
-            for (int i=0;i<front;++i){   // put the other books back in order
-                int temp = temps.removeLast();
-                bookshelf.addFront(temp);
-            }
+            pickFromFront(front);
         } else {    // remove from the back end
             calls = 2*back+1;
             totalCalls += calls;
-            Bookshelf temps = new Bookshelf();
-            for (int i=0;i<=back;++i){   // remove the books when index>=position and store it in a temporary bookshelf
-                int temp = bookshelf.removeLast();
-                temps.addFront(temp);
-            }
-            temps.removeFront();   // delete the book which will be removed
-            for (int i=0;i<back;++i){    // put the other books back in order
-                int temp = temps.removeFront();
-                bookshelf.addLast(temp);
-            }
+            pickFromBack(back);
         }
         assert isValidBookshelfKeeper();
         return calls;   // dummy code to get stub to compile
@@ -127,7 +115,6 @@ public class BookshelfKeeper {
             assert isValidBookshelfKeeper();
             return calls;
         }
-
         int front = bookshelf.size();   // the books before if insert from the left end
         for (int i=0;i<bookshelf.size();++i){
             if (bookshelf.getHeight(i) >= height) {
@@ -135,7 +122,6 @@ public class BookshelfKeeper {
                 break;
             }
         }
-
         int back = 0;   // the books before if insert from the right end
         for (int i=0;i<bookshelf.size();++i){
             if (bookshelf.getHeight(i) > height) {
@@ -143,33 +129,14 @@ public class BookshelfKeeper {
                 break;
             }
         }
-
         if (front<=back){       // insert from the left end
             calls = 2*front+1;          // calculate the calls to insert
             totalCalls += calls;         // update the totalCalls
-            Bookshelf temps = new Bookshelf();
-            for (int i=0;i<front;++i){          // remove the books whose height is smaller than the new book's
-                int temp = bookshelf.removeFront();
-                temps.addLast(temp);
-            }
-            bookshelf.addFront(height);   // put the new book on the shelf
-            for (int i=0;i<front;++i){        // put the other books back
-                int temp = temps.removeLast();
-                bookshelf.addFront(temp);
-            }
+            putFromFront(front,height);
         }else{             // insert from the right end
             calls = 2*back+1;
             totalCalls += calls;
-            Bookshelf temps = new Bookshelf();
-            for (int i=0;i<back;++i){   // remove the books whose height is lager than the new book's
-                int temp = bookshelf.removeLast();
-                temps.addFront(temp);
-            }
-            bookshelf.addLast(height);         // put the new book on the shelf
-            for (int i=0;i<back;++i){          // put the other books back
-                int temp = temps.removeFront();
-                bookshelf.addLast(temp);
-            }
+            putFromBack(back,height);
         }
         assert isValidBookshelfKeeper();
         return calls;
@@ -215,8 +182,57 @@ public class BookshelfKeeper {
     private boolean isValidBookshelfKeeper() {
         if (!bookshelf.isSorted()) return false;  // check if the bookshelf is in well-sorted
         if (totalCalls < calls) return false;   // the totalCalls is always >= calls
+        if (bookshelftemp.size() != 0) return false;     // the temporary bookshelf is always empty after puts and picks
         return true;
     }
 
     // add any other private methods here
+
+    private void pickFromFront(int front){
+        for (int i=0;i<=front;++i){     // remove the books when index<=position and store it in a temporary bookshelf
+            int temp = bookshelf.removeFront();
+            bookshelftemp.addLast(temp);
+        }
+        bookshelftemp.removeLast();  // delete the book which will be removed
+        for (int i=0;i<front;++i) {   // put the other books back in order
+            int temp = bookshelftemp.removeLast();
+            bookshelf.addFront(temp);
+        }
+    }
+
+    private void pickFromBack(int back){
+        for (int i=0;i<=back;++i){   // remove the books when index>=position and store it in a temporary bookshelf
+            int temp = bookshelf.removeLast();
+            bookshelftemp.addFront(temp);
+        }
+        bookshelftemp.removeFront();   // delete the book which will be removed
+        for (int i=0;i<back;++i){    // put the other books back in order
+            int temp = bookshelftemp.removeFront();
+            bookshelf.addLast(temp);
+        }
+    }
+
+    private void putFromFront(int front,int height){
+        for (int i=0;i<front;++i){          // remove the books whose height is smaller than the new book's
+            int temp = bookshelf.removeFront();
+            bookshelftemp.addLast(temp);
+        }
+        bookshelf.addFront(height);   // put the new book on the shelf
+        for (int i=0;i<front;++i){        // put the other books back
+            int temp = bookshelftemp.removeLast();
+            bookshelf.addFront(temp);
+        }
+    }
+
+    private void putFromBack(int back,int height){
+        for (int i=0;i<back;++i){   // remove the books whose height is lager than the new book's
+            int temp = bookshelf.removeLast();
+            bookshelftemp.addFront(temp);
+        }
+        bookshelf.addLast(height);         // put the new book on the shelf
+        for (int i=0;i<back;++i){          // put the other books back
+            int temp = bookshelftemp.removeFront();
+            bookshelf.addLast(temp);
+        }
+    }
 }

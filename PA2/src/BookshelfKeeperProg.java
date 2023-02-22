@@ -2,6 +2,14 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
 
+/**
+ * BookshelfKeeperProgram
+ * BookshelfKeeperProg contains the main method that allows the user to perform
+ * a series of pickPos and putHeight operations on a bookshelf in an interactive
+ * mode with user commands called pick and put.  It can also be run in a batch
+ * mode by using input and output redirection.
+ */
+
 public class BookshelfKeeperProg {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -15,11 +23,11 @@ public class BookshelfKeeperProg {
         }
 
         boolean flag = isSorted(array);
-        if (!flag){
+        if (!flag){   // throw error if the bookshelf is not in non-decreasing order
             System.out.println("ERROR: Heights must be specified in non-decreasing order.");
-        } else if (array.size()!=0 && array.get(0) <= 0){
+        } else if (array.size()!=0 && array.get(0) <= 0){     // throw error if a book on the bookshelf has negative height
             System.out.println("ERROR: Height of a book must be positive.");
-        } else{
+        } else{      // do puts and picks
             bookSort(in,array);
         }
         System.out.println("Exiting Program.");
