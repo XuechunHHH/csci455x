@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class longestWordLen {
     public static void main(String[] args) {
@@ -6,22 +6,17 @@ public class longestWordLen {
     }
 
     public static int longestWordLen(String words) {
-        String[] arr = words.split(" ");
-        int longest = longestLen(arr);
+        Scanner in = new Scanner(words);
+        int longest = longestLen(in,0);
         return longest;
     }
 
-    public static int longestLen(String[] arr){
-        int len = arr.length;
-        if (len==1) return arr[0].length();
-
-        String[] left = Arrays.copyOfRange(arr,0,len/2);
-        String[] right = Arrays.copyOfRange(arr,len/2,len);
-
-        if (longestLen(left) >= longestLen(right)){
-            return longestLen(left);
-        }else{
-            return longestLen(right);
+    public static int longestLen(Scanner in,int maxLen){
+        if (!in.hasNext()) return maxLen;
+        String next = in.next();
+        if (next.length() > maxLen){
+            return longestLen(in,next.length());
         }
+        return longestLen(in,maxLen);
     }
 }
