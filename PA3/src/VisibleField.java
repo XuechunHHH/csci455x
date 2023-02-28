@@ -224,7 +224,7 @@ public class VisibleField {
      * @param col
      */
     private void toUncover(int row,int col){
-        if (mineField.inRange(row,col) && !isUncovered(row,col)) {
+        if (mineField.inRange(row,col) && !isUncovered(row,col) && visibleField[row][col] != MINE_GUESS) {
             visibleField[row][col] = mineField.numAdjacentMines(row,col);
             if (visibleField[row][col] == 0) spreadUncover(row,col);
         }
