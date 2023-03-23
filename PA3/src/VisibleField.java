@@ -70,7 +70,6 @@ public class VisibleField {
      MineField.
      */
     public void resetGameDisplay() {
-        visibleField = new int[mineField.numRows()][mineField.numCols()];
         for (int i=0;i<visibleField.length;++i){
             for (int j=0;j<visibleField[0].length;++j){
                 visibleField[i][j] = COVERED;
