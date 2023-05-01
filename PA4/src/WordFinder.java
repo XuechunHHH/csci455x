@@ -31,6 +31,7 @@ public class WordFinder {
 			if (next.equals(".")) {
 				break;
 			}
+			next = next.replaceAll("[^a-zA-Z]", "");
 			ArrayList<Map.Entry<String, Integer>> scrabbles = rack.getScrabble(next);
 			int size = scrabbles.size();
 			System.out.println("We can make " + size + " words from \"" + next + "\"");

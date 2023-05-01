@@ -59,6 +59,7 @@ int findLast(vector<int> v, int target)
    {
       if (v[i] == target)
          return i;
+      if (i == 0)
+         return -1;
    }
-   return -1;
 }
