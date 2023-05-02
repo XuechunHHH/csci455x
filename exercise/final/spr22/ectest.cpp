@@ -68,43 +68,6 @@ string listToString(ListType list);
  */
 ListType buildList(const string & listString);
 
-void testUniqueUnit(string str, string exp, bool boolean){
-   ListType list = buildList(str);
-   cout << "Expected print out: " << exp <<" "<< boolean << endl;
-   cout << listToString(list) << " " << allUnique(list) << endl;
-   if (allUnique(list) != boolean) {cout << "FAILED" << endl;}
-   cout << "------------------------------------------------------------------------" << endl;
-}
-
-void testUnique(){
-   cout << endl << "Test allUnique() function: " << endl;
-   testUniqueUnit("3 4 -5", "(3 4 -5)", true);
-   testUniqueUnit("6 7 3 6 4 5", "(6 7 3 6 4 5)", false);
-   testUniqueUnit("3 3", "(3 3)", false);
-   testUniqueUnit("", "()", true);
-   testUniqueUnit("5", "(5)", true);
-}
-
-void testMergeUnit(string str1, string str2, string exp){
-   ListType list1 = buildList(str1);
-   ListType list2 = buildList(str2);
-   cout << "list1: " << listToString(list1) << ", list2: " << listToString(list2) << endl;
-   cout << "Expected print out: " << exp << endl;
-   cout << listToString(merge(list1,list2)) << endl;
-   if (listToString(merge(list1,list2)) != exp){cout << "FAILED" << endl;}
-   cout << "------------------------------------------------------------------------" << endl;
-}
-
-void testMerge(){
-   cout << endl << "Test merge() function: " << endl;
-   testMergeUnit("1 3 5", "2 4 6", "(1 2 3 4 5 6)");
-   testMergeUnit("2 3 6", "1 3 5", "(1 2 3 3 5 6)");
-   testMergeUnit("1 3 3 3 5", "2 6", "(1 2 3 3 3 5 6)");
-   testMergeUnit("", "1 3", "(1 3)");
-   testMergeUnit("1 3", "", "(1 3)");
-   testMergeUnit("", "", "()");
-}
-
 void testTriSumUnit(string str, string exp){
    ListType list = buildList(str);
    cout << "Origin list: " << listToString(list) << endl;

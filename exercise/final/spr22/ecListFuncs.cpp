@@ -29,9 +29,14 @@ Node::Node(int item, Node *n)
 
 void triSum(ListType &list)
 {
-   int len = strlen(list) / 3;
    Node *p = list;
-   for (int i = 0; i < len;i++){
+   int cnt = 0;
+   while(p != NULL){
+      cnt ++;
+      p = p->next;
+   }
+   p = list;
+   for (int i = 0; i < cnt/3;i++){
       p->data = p->data + p->next->data + p->next->next->data;
       Node *temp1 = p->next;
       Node *temp2 = p->next->next;
